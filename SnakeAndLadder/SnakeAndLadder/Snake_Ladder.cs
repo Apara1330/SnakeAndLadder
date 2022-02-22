@@ -6,14 +6,16 @@ using System.Threading.Tasks;
 
 namespace SnakeAndLadder
 {
-     class Snake_Ladder
+    public class Snake_Ladder
     {
         int FirstPlayerPosition;
 
+        Random random = new Random();
+
         public void GameBegins()
         {
-            FirstPlayerPosition = 0;
-
+            FirstPlayerPosition = 0;//1st player starting position zero
+            int DiceValue = random.Next(1,7);
         }
     }
 }
