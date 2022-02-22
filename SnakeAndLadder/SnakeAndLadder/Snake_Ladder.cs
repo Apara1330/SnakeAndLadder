@@ -12,7 +12,7 @@ namespace SnakeAndLadder
         int ranOption;
 
         Random random = new Random();
-        public void game()
+        public void GameBegins()
         {
             FirstPlayerPosition = 0; //First player starting at 0th position
 
