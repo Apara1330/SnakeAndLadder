@@ -8,55 +8,59 @@ namespace SnakeAndLadder
 {
     public class Snake_Ladder
     {
-        int FirstPlayerPosition;
         int ranOption;
-        int Max_Position = 100;//last position in the game
+        const int Max_Position = 100;//last position in the game
+        int currPosition = 0;
+        int diceValue;
+        int DiceCount;
 
         Random random = new Random();//to get random values
         public void GameBegins()
         {
-            FirstPlayerPosition = 0; //First player starting at 0th position
-            while (FirstPlayerPosition <= Max_Position)
+            while (currPosition <= Max_Position)//to  reach maximum position
             {
-                
-                int DiceValue = random.Next(1, 7);//Taking random value of Dice from 1-6
-
-                ranOption = random.Next(0, 3);
-
-                if (ranOption == 0)
+                diceValue = random.Next(1, 7);
+                if (currPosition >= 0 && currPosition < 100)
                 {
-                    Console.WriteLine("Not played");
-                    FirstPlayerPosition = FirstPlayerPosition+ FirstPlayerPosition;
-                }
-                else if (ranOption == 1)
-                {
-                    Console.WriteLine("Ladder");
-                    FirstPlayerPosition = FirstPlayerPosition + DiceValue;
+                    ranOption = random.Next(0, 3);
 
-                    if (FirstPlayerPosition + DiceValue <= 100)
+                    if (ranOption == 0)
                     {
-                        FirstPlayerPosition = FirstPlayerPosition + DiceValue;
-
-                        Console.WriteLine("Ladder");
-
+                        Console.WriteLine("Not played");
+                        DiceCount++;
                     }
 
-                    else
+                    else if (ranOption == 1)
                     {
-                        Console.WriteLine(" Still at same position");
+                        if (currPosition + diceValue <= 100)
+                        {
+                            currPosition = currPosition + diceValue;
+                            Console.WriteLine("Ladder");
+                            DiceCount++;
+                        }
+                        else
+                        {
+                            Console.WriteLine(" Still at same position");
+                        }
                     }
+                    else if (ranOption == 2)
+                        if (currPosition - diceValue <= 0)
+                        {
+                            currPosition = 0;
+                            DiceCount++;
+                        }
+                        else
+                        {
+                            currPosition = currPosition - diceValue;
+                            Console.WriteLine("Snake");
+                            DiceCount++;
+                        }
                 }
-                else if (ranOption == 2)
-                {
-                    Console.WriteLine("Snake");
-                    FirstPlayerPosition = FirstPlayerPosition - DiceValue;
-                }
-                else
-                {
-                    Console.WriteLine("Invalid move");
-                }
+                Console.WriteLine(currPosition);
+                Console.WriteLine(DiceCount);
+                Console.WriteLine();
             }
         }
-        }
     }
+}
 

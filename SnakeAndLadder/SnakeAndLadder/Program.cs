@@ -10,6 +10,11 @@ namespace SnakeAndLadder
     {
         static void Main(string[] args)
         {
+            //Console.WriteLine("Hello!");
+
+            Snake_Ladder sl = new Snake_Ladder();
+            sl.GameBegins();
+            
         }
     }
 }
